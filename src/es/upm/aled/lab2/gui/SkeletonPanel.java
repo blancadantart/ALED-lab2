@@ -54,14 +54,19 @@ public class SkeletonPanel extends JPanel {
 		// Draw the tree of Nodes recursively
 		drawSkeleton(g, originX, originY, nodeRoot);
 	}
+	
 
 	private void drawSkeleton(Graphics g, double parentX, double parentY, Node node) {
 		// TODO: Ponga comentarios en este método
 		g.fillOval((int) node.getX() - 4, (int) node.getY() - 4, 8, 8);
 		g.drawLine((int) parentX, (int) parentY, (int) node.getX(), (int) node.getY());
+		
+		// Si un nodo tiene tamaño 0 ó, que es lo mismo, es nulo, sale del método
 		if (node.getChildren().size() == 0) {
 			return;
 		}
+		
+		// Líneas recursivas. Por cada children de la List de la clase Node
 		for (Node child : node.getChildren()) {
 			drawSkeleton(g, node.getX(), node.getY(), child);
 		}
