@@ -31,6 +31,10 @@ public class SkeletonPanel extends JPanel {
 	 * @param sizeX The width of the window.
 	 * @param sizeX The height of the window.
 	 */
+	
+	// Inicializa el segmento raíz. Genera la pantalla (600*600 píxeles), especifica cuándo se va a dar por cerrado
+	// el dibujo del exoesqueleto y la visibilización
+	
 	public SkeletonPanel(Segment root, int sizeX, int sizeY) {
 		this.root = root;
 		// Setup Swing window
@@ -55,18 +59,22 @@ public class SkeletonPanel extends JPanel {
 		drawSkeleton(g, originX, originY, nodeRoot);
 	}
 	
-
+	// Método recursivo, se llama a sí mismo. 
 	private void drawSkeleton(Graphics g, double parentX, double parentY, Node node) {
-		// TODO: Ponga comentarios en este método
+		
+		// Parte común del algoritmo. Cualquier llamada al método hará esto.
+		// Pinta un óvalo (el nodo que se pasa como parámetro) con cierto volumen (-4,-4)
 		g.fillOval((int) node.getX() - 4, (int) node.getY() - 4, 8, 8);
+		// Parte común del algoritmo. Cualquier llamada al método hará esto.
+		// Pinta una línea respecto al segmento anterior 
 		g.drawLine((int) parentX, (int) parentY, (int) node.getX(), (int) node.getY());
 		
-		// Si un nodo tiene tamaño 0 ó, que es lo mismo, es nulo, sale del método
+		// Caso base. Si un nodo tiene tamaño 0 ó, que es lo mismo, es nulo, sale del método
 		if (node.getChildren().size() == 0) {
 			return;
 		}
-		
-		// Líneas recursivas. Por cada children de la List de la clase Node
+		// Líneas recursivas. Por cada hijo de cada segmento, llamamos a drawSkeleton para pintar el nodo que los une
+		// y su segmento hijo 
 		for (Node child : node.getChildren()) {
 			drawSkeleton(g, node.getX(), node.getY(), child);
 		}

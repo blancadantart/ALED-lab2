@@ -3,6 +3,7 @@ package es.upm.aled.lab2.kinematics;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * Class representing a segment with its length and angle.
  * It also contains a List of Segments called children.

@@ -47,6 +47,22 @@ public class SkeletonVisualizer {
 		Segment rightForearm = new Segment(70, Math.toRadians(20));
 		leftUpperArm.addChild(leftForearm);
 		rightUpperArm.addChild(rightForearm);
+		
+		// Si quisiésemos añadirle 3 dedos a cada mano:
+		Segment finger1R = new Segment(10,Math.toRadians(90));
+		Segment finger2R = new Segment(10,Math.toRadians(30));
+		Segment finger3R = new Segment(10,Math.toRadians(-30));
+		rightForearm.addChild(finger1R);
+		rightForearm.addChild(finger2R);
+		rightForearm.addChild(finger3R);
+		
+		Segment finger1L = new Segment(10,Math.toRadians(90));
+		Segment finger2L = new Segment(10,Math.toRadians(30));
+		Segment finger3L = new Segment(10,Math.toRadians(-30));
+		leftForearm.addChild(finger1L);
+		leftForearm.addChild(finger2L);
+		leftForearm.addChild(finger3L);
+		
 		// Legs
 		Segment leftThigh = new Segment(100, Math.toRadians(120));
 		Segment rightThigh = new Segment(100, Math.toRadians(60));
